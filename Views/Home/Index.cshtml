@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Our Veterinary Clinic App</h1>
+    <p>This application helps manage owners and their pets.</p>
+    <a href="@Url.Action("Index", "Owner")" class="btn btn-primary">View Owners</a>
+    <a href="@Url.Action("Index", "Pet")" class="btn btn-secondary">View Pets</a>
+</div>

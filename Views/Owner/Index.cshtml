@@ -1,0 +1,35 @@
+﻿@model IEnumerable<veterinary_client_app.Models.Entities.Owner>
+
+@{
+    ViewData["Title"] = "Owners List";
+}
+
+<h2>Owners</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var owner in Model)
+    {
+        <tr>
+            <td>@owner.OwnerId</td>
+            <td>@owner.Name</td>
+            <td>@owner.Age</td>
+            <td>
+                <a href="@Url.Action("Details", "Owner", new { id = owner.OwnerId })">Details</a> |
+                <a href="@Url.Action("Edit", "Owner", new { id = owner.OwnerId })">Edit</a> |
+                <a href="@Url.Action("Delete", "Owner", new { id = owner.OwnerId })">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Owner")">Create New Owner</a>
