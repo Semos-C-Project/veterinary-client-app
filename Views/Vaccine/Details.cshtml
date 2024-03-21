@@ -1,0 +1,13 @@
+﻿@model veterinary_client_app.Models.Entities.Vaccine
+
+<h2>Vaccine Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+</div>
+
+<div>
+    <a href="@Url.Action("Edit", new { id = Model.VaccineId })">Edit</a> |
+    <a href="@Url.Action("Delete", new { id = Model.VaccineId })">Delete</a> |
+    <a href="@Url.Action("Index")">Back to List</a>
+</div>

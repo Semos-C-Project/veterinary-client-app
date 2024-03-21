@@ -17,6 +17,12 @@
                    aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
            </button>
+           @if (TempData["LoginStatus"] != null)
+           {
+               <div class="alert alert-info" role="alert">
+                   @TempData["LoginStatus"]
+               </div>
+           }
            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                <ul class="navbar-nav flex-grow-1">
                    <li class="nav-item">
@@ -28,6 +34,10 @@
                    <li class="nav-item">
                        <a class="nav-link text-dark" asp-area="" asp-controller="Pet" asp-action="Index">Pets</a>
                    </li>
+                   <li class="nav-item">
+                       <a class="nav-link text-dark" asp-area="" asp-controller="Vaccine" asp-action="Index">Vaccines</a>
+                   </li>
+                   @Html.Partial("_LoginPartial")
                </ul>
            </div>
        </div>
@@ -41,7 +51,7 @@
 </div>
 
 <footer class="border-top footer text-muted">
-    <div class="container">
+    <div class="f-container">
         &copy; 2024 - veterinary_client_app - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>

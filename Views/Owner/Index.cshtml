@@ -11,6 +11,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Surname</th>
             <th>Age</th>
             <th>Actions</th>
         </tr>
@@ -21,15 +22,19 @@
         <tr>
             <td>@owner.OwnerId</td>
             <td>@owner.Name</td>
+            <td>@owner.Surname</td>
             <td>@owner.Age</td>
             <td>
-                <a href="@Url.Action("Details", "Owner", new { id = owner.OwnerId })">Details</a> |
-                <a href="@Url.Action("Edit", "Owner", new { id = owner.OwnerId })">Edit</a> |
-                <a href="@Url.Action("Delete", "Owner", new { id = owner.OwnerId })">Delete</a>
+                <a href="@Url.Action("Details", "Owner", new { id = owner.OwnerId })">Details</a>
+                @if (User.IsInRole("Admin"))
+                                  {
+                                      @:| <a href="@Url.Action("Edit", "Owner", new { id = owner.OwnerId })">Edit</a> 
+                                      @:| <a href="@Url.Action("Delete", "Owner", new { id = owner.OwnerId })">Delete</a>
+                                  }
             </td>
         </tr>
     }
     </tbody>
 </table>
 
-<a href="@Url.Action("Create", "Owner")">Create New Owner</a>
+<a href="@Url.Action("Create", "Owner")" class="btn btn-success">Create New Owner</a>
