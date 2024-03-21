@@ -1,0 +1,42 @@
+﻿@model IEnumerable<veterinary_client_app.Models.Entities.Pet>
+@using Microsoft.AspNetCore.Identity
+@using veterinary_client_app.Models.Entities
+@inject UserManager<ApplicationUser> UserManager
+
+<h2>Pets</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Age</th>
+        <th>Owner</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        var fullName = item.Owner.Name + " " + item.Owner.Surname;
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>@Html.DisplayFor(modelItem => fullName)</td>
+            <td>
+                <a href="@Url.Action("Details", new {id = item.PetId})">Details</a>
+               @if (User.IsInRole("Admin"))
+                  {
+                      @:| <a href="@Url.Action("Edit", new { id = item.PetId })">Edit</a>
+                      @:| <a href="@Url.Action("Delete", new { id = item.PetId })">Delete</a>
+                  }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

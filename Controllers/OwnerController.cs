@@ -26,7 +26,7 @@ public class OwnerController : Controller
     {
         if (id == null) return BadRequest("Owner Id is missing");
 
-        var owner = await _dbContext.Owners.FirstOrDefaultAsync(m => m.OwnerId == id);
+        var owner = await _dbContext.Owners.Include(o => o.Pets).FirstOrDefaultAsync(m => m.OwnerId == id);
         if (owner == null)
         {
             return NotFound($"Owner with id {id} was not found");
@@ -43,7 +43,7 @@ public class OwnerController : Controller
     
     // POST: Owner/Create
     [HttpPost]
-    public async Task<IActionResult> Create([Bind("OwnerId,Name,Age")] Owner owner)
+    public async Task<IActionResult> Create([Bind("OwnerId,Name,Surname,Age")] Owner owner)
     {
         if (ModelState.IsValid)
         {
@@ -71,7 +71,7 @@ public class OwnerController : Controller
     
     // POST: Owner/Edit/5
     [HttpPost]
-    public async Task<IActionResult> Edit(long id, [Bind("OwnerId,Name,Age")] Owner owner)
+    public async Task<IActionResult> Edit(long id, [Bind("OwnerId,Name,Surname,Age")] Owner owner)
     {
         if (id != owner.OwnerId) return BadRequest();
 

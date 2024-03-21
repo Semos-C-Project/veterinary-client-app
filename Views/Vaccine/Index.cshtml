@@ -1,0 +1,28 @@
+﻿@model IEnumerable<veterinary_client_app.Models.Entities.Vaccine>
+
+<h2>Vaccines</h2>
+
+<p>
+    <a href="@Url.Action("Create")">Create New Vaccine</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.VaccineId })">Edit</a> |
+                <a href="@Url.Action("Details", new { id=item.VaccineId })">Details</a> |
+                <a href="@Url.Action("Delete", new { id=item.VaccineId })">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

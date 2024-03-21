@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model veterinary_client_app.Models.ViewModels.LoginViewModel
+<div class="bg-gradient">
+<h1 style="text-align: center; margin-bottom: 4rem">Log In</h1>
+
+<form asp-action="Login" style="display: flex; flex-direction: column; gap: 1rem; justify-content: center; align-items: center">
+    <label>Email</label>
+    <input asp-for="Email"/>
+
+    <label>Password</label>
+    <input asp-for="Password"/>
+    
+    <label>Remember Me?</label>
+    <input asp-for="RememberMe"/>
+    <button type="submit">Log in</button>
+</form>
+</div>
